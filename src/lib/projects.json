@@ -1,0 +1,63 @@
+[
+  {
+    "id": "meditrack",
+    "title": "MediTrack",
+    "description": "A cross-platform health maintenance medication tracking system built for the Hack4Mapandan initiative. Features a Next.js web dashboard and Flutter mobile app connected to Firebase, with push notification reminders, user profile management with avatar upload, and real-time data synchronization across platforms.",
+    "techStack": ["Next.js", "Flutter", "Firebase", "Tailwind CSS", "TypeScript", "Vercel"],
+    "completionDate": "2026-05-02",
+    "category": "Full-Stack",
+    "status": "Completed",
+    "featured": true,
+    "links": {
+      "live": "https://meditrack-web-system.vercel.app/doctor",
+      "repo": "https://github.com/maecryshel/MediTrack-Web-System",
+      "apk": "https://drive.google.com/drive/folders/1hAnSS8sodqsIYsq07cJEbjKbEsojZhyK?usp=sharing"
+    },
+    "features": [
+      "Doctor & patient dashboards with role-based access",
+      "Medication schedule management and adherence tracking",
+      "Push notification reminders via Firebase Cloud Messaging",
+      "User profile management with avatar upload",
+      "Real-time data sync between web and Flutter mobile app",
+      "Flutter Android APK for offline-capable mobile access"
+    ]
+  },
+  {
+    "id": "hack4mapandan",
+    "title": "Hack4Mapandan — Health Track",
+    "description": "Community-driven hackathon project addressing health needs in Mapandan. Conducted field interviews and audio transcription with local residents, produced research documentation, and built a PowerPoint pitch deck covering the Maintenance Medication Tracking solution concept.",
+    "techStack": ["Field Research", "Transcription", "Documentation", "Presentation Design"],
+    "completionDate": "2026-03-06",
+    "category": "Research",
+    "status": "Completed",
+    "featured": true
+  },
+  {
+    "id": "portfolio",
+    "title": "Portfolio & Activity Log",
+    "description": "A high-performance, SEO-optimized internship portfolio built with the Next.js App Router and TypeScript. Features data-driven content via local JSON and Markdown files, a filterable work gallery, static route generation for weekly logs, and Lighthouse 90+ optimization targets.",
+    "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "Vercel"],
+    "completionDate": "2026-05-10",
+    "category": "Frontend",
+    "status": "Completed",
+    "featured": true
+  },
+  {
+    "id": "orangehrm-research",
+    "title": "OrangeHRM Schema Research",
+    "description": "Researched OrangeHRM Open Source Edition and produced a database schema map for Employee Records and Timekeeping modules, documenting how attendance data links to employee IDs and feeds into payroll computation workflows.",
+    "techStack": ["OrangeHRM", "Database Design", "HR Systems", "Documentation"],
+    "completionDate": "2026-02-19",
+    "category": "Research",
+    "status": "Completed"
+  },
+  {
+    "id": "backlink-sentiment",
+    "title": "Backlink & Sentiment Analysis",
+    "description": "Group exploration of Backlink Analysis and Sentiment Distribution, learning how backlinks are discovered and how online mentions reflect overall brand sentiment. Produced a group report on findings.",
+    "techStack": ["SEO Tools", "Sentiment Analysis", "Research"],
+    "completionDate": "2026-02-24",
+    "category": "Research",
+    "status": "Completed"
+  }
+]
