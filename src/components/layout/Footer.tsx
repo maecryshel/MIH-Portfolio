@@ -16,7 +16,7 @@ export function Footer() {
               C. <span>Abella</span>
             </p>
             <p className="footer-copy">
-              Web2 Developer Intern at Makerspace Innovhub. Building polished web experiences with a calm, approachable visual tone.
+              Intern at Makerspace Innovhub. Building polished web experiences with a calm, approachable visual tone.
             </p>
           </div>
 
