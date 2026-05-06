@@ -93,11 +93,9 @@ export function WorkClient({ projects, categories, techStacks }: WorkClientProps
       </div>
 
       {/* 3. Projects Grid */}
-      <main className="projects-grid fade-up">
+      <main className="projects-grid projects-grid--compact fade-up">
         {filtered.map((p) => (
-          <div key={p.id} className="card-hover">
-            <ProjectCard project={p} />
-          </div>
+          <ProjectCard key={p.id} project={p} compact />
         ))}
       </main>
 

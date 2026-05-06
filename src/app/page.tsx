@@ -48,16 +48,13 @@ export default function HomePage() {
     <div className="page-container">
 
       {/* ── Hero Section ── */}
-      <section className="hero-section fade-up" style={{ borderBottom: "1px solid var(--rule)" }}>
+      <section className="hero-section fade-up">
         <div className="hero-inner flex flex-col md:flex-row items-center justify-between gap-12 py-12">
           
           {/* Left Column: Bio */}
           <div className="hero-left flex-1 text-center md:text-left">
             <div style={{ marginBottom: "1.5rem" }}>
-              <span className="status-pill">
-                <span className="status-dot" />
-                Active Intern · Makerspace Innovhub
-              </span>
+
             </div>
 
             <h1 className="hero-title">
@@ -79,18 +76,9 @@ export default function HomePage() {
 
           {/* Right Column: Circular Portrait */}
           <div className="hero-right flex-shrink-0">
-            <div className="relative group">
-              {/* Decorative soft glow */}
-              <div 
-                className="absolute inset-0 rounded-full scale-110 opacity-20 blur-3xl transition-opacity group-hover:opacity-30"
-                style={{ background: "linear-gradient(135deg, var(--mauve), var(--salmon))" }}
-              />
-              
-              {/* Parent container for 'fill' Image */}
-              <div 
-                className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-[6px] border-white shadow-2xl"
-                style={{ background: "var(--parchment)" }}
-              >
+            <div className="hero-profile-frame group">
+              <div className="hero-profile-shadow" />
+              <div className="hero-profile-image">
                 <Image
                   src="/profile.jpg"
                   alt="Cryshel Mae C. Abella"
@@ -100,14 +88,14 @@ export default function HomePage() {
                   sizes="(max-width: 768px) 256px, 320px"
                 />
               </div>
+              <div className="hero-profile-ring" />
 
-              {/* Decorative Accent Dots */}
-              <div className="absolute -bottom-2 -right-2 flex gap-1.5">
+              <div className="hero-accent-dots">
                 {["var(--mauve)", "var(--salmon)", "var(--sage)"].map((c, i) => (
                   <span 
-                    key={i} 
-                    style={{ background: c }} 
-                    className="w-4 h-4 rounded-full border-2 border-white shadow-sm" 
+                    key={i}
+                    style={{ background: c }}
+                    className="hero-accent-dot"
                   />
                 ))}
               </div>
@@ -117,7 +105,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats Section ── */}
-      <section className="section fade-up" style={{ borderBottom: "1px solid var(--rule)" }}>
+      <section className="section fade-up">
         <div className="stats-grid">
           {stats.map((s, i) => {
             const bgs = ["var(--mauve-bg)", "var(--peach-light)", "var(--sage-light)", "var(--parchment)"];
@@ -133,7 +121,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Skills Section ── */}
-      <section className="section fade-up" style={{ borderBottom: "1px solid var(--rule)" }}>
+      <section className="section fade-up">
         <p className="section-label">Technical Skills</p>
         <div className="skills-list flex flex-wrap gap-2">
           {skills.map((s) => (
@@ -143,7 +131,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Featured Projects Section ── */}
-      <section className="section fade-up" style={{ borderBottom: "1px solid var(--rule)" }}>
+      <section className="section fade-up">
         <div className="section-header flex justify-between items-end mb-8">
           <div>
             <p className="section-label">Selected Work</p>
@@ -151,9 +139,9 @@ export default function HomePage() {
           </div>
           <Link href="/work" className="section-link">View all →</Link>
         </div>
-        <div className="projects-grid">
+        <div className="projects-grid projects-grid--homepage">
           {featured.map((p) => (
-            <ProjectCard key={p.id} project={p} />
+            <ProjectCard key={p.id} project={p} compact />
           ))}
         </div>
       </section>

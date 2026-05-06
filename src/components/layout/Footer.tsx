@@ -1,35 +1,45 @@
+import Link from "next/link";
+
+const footerLinks = [
+  { href: "/", label: "Home" },
+  { href: "/work", label: "Work" },
+  { href: "/logs", label: "Logs" },
+];
+
 export function Footer() {
   return (
-    <footer
-      style={{
-        borderTop: "1px solid var(--rule2)", // Using a lighter rule
-        background: "transparent", // Removing the background block makes it feel less "heavy"
-        color: "var(--ink3)",
-      }}
-      className="py-8 mt-12" // Reduced vertical padding and margin
-    >
+    <footer className="site-footer">
       <div className="page-container">
-        <div className="flex flex-col md:flex-row justify-between items-end md:items-center gap-6">
-          
-          {/* Left: Minimal Identity */}
-          <div className="flex flex-col gap-1">
-            <h2 
-              style={{ 
-                fontFamily: "'Cormorant Garamond', serif", 
-                fontSize: "1.1rem", // Scaled down
-                color: "var(--ink)",
-                lineHeight: 1,
-              }}
-            >
-              C. <span style={{ fontStyle: "italic", color: "var(--mauve-light)" }}>Abella</span>
-            </h2>
-            <p style={{ fontSize: "9px", letterSpacing: "1px", textTransform: "uppercase", opacity: 0.6 }}>
-              Makerspace Innovhub 
+        <div className="footer-grid">
+          <div>
+            <p className="footer-logo">
+              C. <span>Abella</span>
+            </p>
+            <p className="footer-copy">
+              Web2 Developer Intern at Makerspace Innovhub. Building polished web experiences with a calm, approachable visual tone.
             </p>
           </div>
 
+          <div>
+            <p className="footer-heading">Explore</p>
+            <nav className="footer-nav" aria-label="Footer navigation">
+              {footerLinks.map((link) => (
+                <Link key={link.href} href={link.href} className="footer-link">
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-
+          <div>
+            <p className="footer-heading">Notes</p>
+            <p className="footer-note">
+              Keep exploring the curated internship journey and project highlights. Every page is optimized for readable storytelling.
+            </p>
+            <p className="footer-meta">
+              © 2026 Cryshel Mae Abella 
+            </p>
+          </div>
         </div>
       </div>
     </footer>

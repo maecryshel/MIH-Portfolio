@@ -259,18 +259,7 @@ export function Nav() {
               })}
             </nav>
 
-            <p
-              style={{
-                fontSize: "11px",
-                color: "var(--ink3)",
-                letterSpacing: "0.5px",
-                marginTop: "1.5rem",
-                paddingTop: "1rem",
-                borderTop: "1px solid var(--rule)",
-              }}
-            >
-              Makerspace Innovhub · OJT 2025–2026
-            </p>
+
           </div>
         </div>
       )}
