@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'mdx'],
-  experimental: { mdxRs: true },
 
-  // Performance optimizations for 100% Lighthouse
+  // Performance optimizations for Lighthouse
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -22,18 +21,10 @@ const nextConfig = {
 
   // Output standalone for better performance
   output: 'standalone',
-
-  // Bundle analyzer
-  ...(process.env.ANALYZE === 'true' && {
-    bundleAnalyzer: {
-      enabled: true,
-      openAnalyzer: true,
-    },
-  }),
+  poweredByHeader: false,
 
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
-    // Optimize chunks
     if (!dev && !isServer) {
       config.optimization.splitChunks.chunks = 'all';
       config.optimization.splitChunks.cacheGroups = {
@@ -61,7 +52,6 @@ const nextConfig = {
       };
     }
 
-    // Minimize bundle size
     if (!dev) {
       config.optimization.minimize = true;
       config.optimization.usedExports = true;
@@ -76,37 +66,21 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY'
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin'
-          },
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
       },
       {
         source: '/_next/static/(.*)',
         headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable'
-          }
-        ]
-      }
-    ]
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+    ];
   },
 
-  // Performance budgets
   experimental: {
     mdxRs: true,
     scrollRestoration: true,
@@ -114,17 +88,12 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', '@next/font'],
   },
 
-  // Bundle analyzer (only in development)
   ...(process.env.ANALYZE === 'true' && {
     bundleAnalyzer: {
       enabled: true,
       openAnalyzer: true,
     },
   }),
-
-  // Output optimization
-  output: 'standalone',
-  poweredByHeader: false,
 };
 
 export default nextConfig;
