@@ -125,7 +125,7 @@ export function Nav() {
                 return (
                   <Link
                     key={l.href}
-                    href={l.href}
+                    href={l.href as any}
                     style={{
                       fontSize: "11.5px",
                       fontWeight: 500,
@@ -274,7 +274,7 @@ export function Nav() {
                 return (
                   <Link
                     key={l.href}
-                    href={l.href}
+                    href={l.href as any}
                     style={{
                       fontSize: "1.05rem",
                       fontFamily: "'Cormorant Garamond', serif",

@@ -24,7 +24,7 @@ export function Footer() {
             <p className="footer-heading">Explore</p>
             <nav className="footer-nav" aria-label="Footer navigation">
               {footerLinks.map((link) => (
-                <Link key={link.href} href={link.href} className="footer-link">
+                <Link key={link.href} href={link.href as any} className="footer-link">
                   {link.label}
                 </Link>
               ))}
