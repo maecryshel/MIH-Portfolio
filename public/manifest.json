@@ -1,0 +1,27 @@
+{
+  "name": "Cryshel Mae Abella - Portfolio",
+  "short_name": "C. Abella",
+  "description": "Web2 Developer Intern portfolio at Makerspace Innovhub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF6F1",
+  "theme_color": "#8B6471",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["portfolio", "business"],
+  "icons": [
+    {
+      "src": "/profile.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}

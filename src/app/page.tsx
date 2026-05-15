@@ -46,18 +46,13 @@ export default function HomePage() {
 
   return (
     <div className="page-container">
-
       {/* ── Hero Section ── */}
-      <section className="hero-section fade-up">
+      <section className="hero-section fade-up" aria-labelledby="hero-title">
         <div className="hero-inner flex flex-col md:flex-row items-center justify-between gap-12 py-12">
-          
+
           {/* Left Column: Bio */}
           <div className="hero-left flex-1 text-center md:text-left">
-            <div style={{ marginBottom: "1.5rem" }}>
-
-            </div>
-
-            <h1 className="hero-title">
+            <h1 id="hero-title" className="hero-title">
               Cryshel Mae{" "}
               <em style={{ color: "var(--mauve)", fontStyle: "italic" }}>Abella</em>
             </h1>
@@ -68,7 +63,7 @@ export default function HomePage() {
               University of Eastern Pangasinan.
             </p>
 
-            <div className="hero-ctas justify-center md:justify-start">
+            <div className="hero-ctas justify-center md:justify-start" role="group" aria-label="Primary actions">
               <Link href="/work" className="btn-primary">View Work</Link>
               <Link href="/logs" className="btn-outline">Read Logs</Link>
             </div>
@@ -76,26 +71,27 @@ export default function HomePage() {
 
           {/* Right Column: Circular Portrait */}
           <div className="hero-right flex-shrink-0">
-            <div className="hero-profile-frame group">
-              <div className="hero-profile-shadow" />
+            <div className="hero-profile-frame group" role="img" aria-label="Profile photo of Cryshel Mae C. Abella">
+              <div className="hero-profile-shadow" aria-hidden="true" />
               <div className="hero-profile-image">
                 <Image
                   src="/profile.jpg"
-                  alt="Cryshel Mae C. Abella"
+                  alt="Professional headshot of Cryshel Mae C. Abella, Web2 Developer Intern"
                   fill
                   className="object-cover"
                   priority
                   sizes="(max-width: 768px) 256px, 320px"
                 />
               </div>
-              <div className="hero-profile-ring" />
+              <div className="hero-profile-ring" aria-hidden="true" />
 
-              <div className="hero-accent-dots">
+              <div className="hero-accent-dots" aria-hidden="true">
                 {["var(--mauve)", "var(--salmon)", "var(--sage)"].map((c, i) => (
-                  <span 
+                  <span
                     key={i}
                     style={{ background: c }}
                     className="hero-accent-dot"
+                    aria-hidden="true"
                   />
                 ))}
               </div>
@@ -105,14 +101,15 @@ export default function HomePage() {
       </section>
 
       {/* ── Stats Section ── */}
-      <section className="section fade-up">
-        <div className="stats-grid">
+      <section className="section fade-up" aria-labelledby="stats-heading">
+        <h2 id="stats-heading" className="sr-only">Internship Statistics</h2>
+        <div className="stats-grid" role="list">
           {stats.map((s, i) => {
             const bgs = ["var(--mauve-bg)", "var(--peach-light)", "var(--sage-light)", "var(--parchment)"];
             const fgs = ["var(--mauve)", "var(--salmon)", "var(--sage-dark)", "var(--ink2)"];
             return (
-              <div key={s.label} className="stat-card" style={{ background: bgs[i % bgs.length], border: "1px solid var(--rule)" }}>
-                <div className="stat-number" style={{ color: fgs[i % fgs.length] }}>{s.n}</div>
+              <div key={s.label} className="stat-card" style={{ background: bgs[i % bgs.length], border: "1px solid var(--rule)" }} role="listitem">
+                <div className="stat-number" style={{ color: fgs[i % fgs.length] }} aria-label={`${s.n} ${s.label}`}>{s.n}</div>
                 <div className="stat-label">{s.label}</div>
               </div>
             );
@@ -121,25 +118,25 @@ export default function HomePage() {
       </section>
 
       {/* ── Skills Section ── */}
-      <section className="section fade-up">
-        <p className="section-label">Technical Skills</p>
-        <div className="skills-list flex flex-wrap gap-2">
+      <section className="section fade-up" aria-labelledby="skills-heading">
+        <h2 id="skills-heading" className="section-label">Technical Skills</h2>
+        <div className="skills-list flex flex-wrap gap-2" role="list" aria-label="Technical skills">
           {skills.map((s) => (
-            <span key={s} className="skill-tag">{s}</span>
+            <span key={s} className="skill-tag" role="listitem">{s}</span>
           ))}
         </div>
       </section>
 
       {/* ── Featured Projects Section ── */}
-      <section className="section fade-up">
+      <section className="section fade-up" aria-labelledby="projects-heading">
         <div className="section-header flex justify-between items-end mb-8">
           <div>
-            <p className="section-label">Selected Work</p>
-            <h2 className="text-2xl font-['Cormorant_Garamond'] italic">Featured Projects</h2>
+            <h2 id="projects-heading" className="section-label">Selected Work</h2>
+            <p className="text-2xl font-['Cormorant_Garamond'] italic">Featured Projects</p>
           </div>
-          <Link href="/work" className="section-link">View all →</Link>
+          <Link href="/work" className="section-link" aria-label="View all projects">View all →</Link>
         </div>
-        <div className="projects-grid projects-grid--homepage">
+        <div className="projects-grid projects-grid--homepage" role="list" aria-label="Featured projects">
           {featured.map((p) => (
             <ProjectCard key={p.id} project={p} compact />
           ))}
@@ -147,18 +144,19 @@ export default function HomePage() {
       </section>
 
       {/* ── Internship Timeline Section ── */}
-      <section className="section section-last fade-up">
-        <p className="section-label">Internship Journey</p>
-        <div className="timeline mt-10">
-          <div className="timeline-line" />
+      <section className="section section-last fade-up" aria-labelledby="timeline-heading">
+        <h2 id="timeline-heading" className="section-label">Internship Journey</h2>
+        <div className="timeline mt-10" role="list" aria-label="Internship timeline">
+          <div className="timeline-line" aria-hidden="true" />
           {timelineWeeks.map((w, i) => (
-            <div key={w.week} className="timeline-item">
-              <div 
-                className="timeline-dot" 
-                style={{ 
-                  background: dotColors[i % dotColors.length], 
-                  boxShadow: `0 0 0 4px ${dotColors[i % dotColors.length]}22` 
-                }} 
+            <div key={w.week} className="timeline-item" role="listitem">
+              <div
+                className="timeline-dot"
+                style={{
+                  background: dotColors[i % dotColors.length],
+                  boxShadow: `0 0 0 4px ${dotColors[i % dotColors.length]}22`
+                }}
+                aria-hidden="true"
               />
               <div className="pb-8 pl-4">
                 <p className="timeline-week text-[10px] font-bold uppercase tracking-widest text-[var(--ink3)]">

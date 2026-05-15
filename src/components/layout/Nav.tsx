@@ -32,6 +32,44 @@ export function Nav() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  /* Focus trap for mobile menu */
+  useEffect(() => {
+    if (open && isMobile) {
+      const focusableElements = document.querySelectorAll(
+        'a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select'
+      );
+      const firstElement = focusableElements[0] as HTMLElement;
+      const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+      const handleTabKey = (e: KeyboardEvent) => {
+        if (e.key === 'Tab') {
+          if (e.shiftKey) {
+            if (document.activeElement === firstElement) {
+              lastElement.focus();
+              e.preventDefault();
+            }
+          } else {
+            if (document.activeElement === lastElement) {
+              firstElement.focus();
+              e.preventDefault();
+            }
+          }
+        }
+
+        if (e.key === 'Escape') {
+          setOpen(false);
+        }
+      };
+
+      document.addEventListener('keydown', handleTabKey);
+      firstElement?.focus();
+
+      return () => {
+        document.removeEventListener('keydown', handleTabKey);
+      };
+    }
+  }, [open, isMobile]);
+
   return (
     <>
       <header
@@ -194,6 +232,9 @@ export function Nav() {
       {/* Mobile drawer */}
       {isMobile && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation menu"
           style={{
             position: "fixed",
             top: "60px",
@@ -227,7 +268,7 @@ export function Nav() {
               <div style={{ flex: 1, background: "var(--sage)" }} />
             </div>
 
-            <nav style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+            <nav role="navigation" aria-label="Mobile navigation" style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
               {links.map((l) => {
                 const active = l.href === "/" ? pathname === "/" : pathname.startsWith(l.href);
                 return (
