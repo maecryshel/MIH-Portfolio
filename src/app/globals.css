@@ -190,7 +190,21 @@ button:focus-visible {
   }
 
   body::before {
-    opacity: 0.01;
+    opacity: 0.005; /* Even more subtle on mobile for better performance */
+  }
+
+  /* Optimize animations on mobile */
+  .fade-up {
+    animation: none; /* Disable animations on mobile for better performance */
+  }
+
+  /* Reduce font loading on mobile */
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
   }
 }
 

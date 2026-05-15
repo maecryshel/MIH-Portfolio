@@ -37,20 +37,34 @@ const nextConfig = {
     if (!dev && !isServer) {
       config.optimization.splitChunks.chunks = 'all';
       config.optimization.splitChunks.cacheGroups = {
-        ...config.optimization.splitChunks.cacheGroups,
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
           chunks: 'all',
           priority: 10,
+          enforce: true,
         },
         nextjs: {
           test: /[\\/]node_modules[\\/]next[\\/]/,
           name: 'nextjs',
           chunks: 'all',
           priority: 20,
+          enforce: true,
+        },
+        react: {
+          test: /[\\/]node_modules[\\/]react/,
+          name: 'react',
+          chunks: 'all',
+          priority: 30,
+          enforce: true,
         },
       };
+    }
+
+    // Minimize bundle size
+    if (!dev) {
+      config.optimization.minimize = true;
+      config.optimization.usedExports = true;
     }
 
     return config;
@@ -92,13 +106,25 @@ const nextConfig = {
     ]
   },
 
-  // Experimental features for better performance
+  // Performance budgets
   experimental: {
     mdxRs: true,
-    optimizeCss: true,
     scrollRestoration: true,
     typedRoutes: true,
-  }
+    optimizePackageImports: ['lucide-react', '@next/font'],
+  },
+
+  // Bundle analyzer (only in development)
+  ...(process.env.ANALYZE === 'true' && {
+    bundleAnalyzer: {
+      enabled: true,
+      openAnalyzer: true,
+    },
+  }),
+
+  // Output optimization
+  output: 'standalone',
+  poweredByHeader: false,
 };
 
 export default nextConfig;
